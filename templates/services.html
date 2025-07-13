@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swift Moving - Our Services</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), 
+                        url('https://images.unsplash.com/photo-1551524559-8af4e6624178?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 50px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h2 {
+            color: var(--secondary);
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .price-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .features-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .features-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .features-list li:before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .insurance-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 50px 0;
+        }
+        
+        .insurance-banner h2 {
+            margin-top: 0;
+            font-size: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    {% extends 'base.html' %}  <!-- If you have a base template -->
+    {% block content %}         <!-- If you use template blocks -->
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Our Moving Services</h1>
+            <p>Comprehensive relocation solutions tailored to your needs. From small apartments to large offices, we handle every detail with care.</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="services-grid">
+            <!-- Apartment Moving -->
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="service-content">
+                    <h2>Apartment Moving</h2>
+                    <p>Stress-free moving for apartments of all sizes with careful handling of your belongings.</p>
+                    <div class="price-tag">Starting from 2,800₪</div>
+                    <ul class="features-list">
+                        <li>Professional packing available</li>
+                        <li>Furniture disassembly/reassembly</li>
+                        <li>Elevator or stair carries</li>
+                        <li>Same-day service available</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Office Moving -->
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="service-content">
+                    <h2>Office Moving</h2>
+                    <p>Minimize downtime with our efficient office relocation services.</p>
+                    <div class="price-tag">Custom Quotes</div>
+                    <ul class="features-list">
+                        <li>After-hours and weekend moves</li>
+                        <li>IT equipment handling</li>
+                        <li>Furniture installation</li>
+                        <li>Secure document transport</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Packing Services -->
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1600689482727-ea31aa07a95c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="service-content">
+                    <h2>Packing Services</h2>
+                    <p>Professional packing using high-quality materials to protect your items.</p>
+                    <div class="price-tag">30₪-35₪ per box</div>
+                    <ul class="features-list">
+                        <li>30₪ for standard boxes</li>
+                        <li>35₪ for fragile items (glass, electronics)</li>
+                        <li>Custom crating available</li>
+                        <li>Inventory labeling system</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Long Distance -->
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="service-content">
+                    <h2>Long Distance</h2>
+                    <p>Reliable cross-country moving with tracking and timely delivery.</p>
+                    <div class="price-tag">Distance-based pricing</div>
+                    <ul class="features-list">
+                        <li>Nationwide coverage</li>
+                        <li>Vehicle transport available</li>
+                        <li>Real-time shipment tracking</li>
+                        <li>Temporary storage options</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Storage Solutions -->
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="service-content">
+                    <h2>Storage Solutions</h2>
+                    <p>Secure, climate-controlled storage for your belongings.</p>
+                    <div class="price-tag">No storage fees</div>
+                    <ul class="features-list">
+                        <li>We connect you with storage providers</li>
+                        <li>Only pay for transportation</li>
+                        <li>Short or long-term options</li>
+                        <li>24/7 security available</li>
+                    </ul>
+                    <p><small>Rental agreement directly between you and storage provider</small></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="insurance-banner">
+            <h2><i class="fas fa-shield-alt"></i> Insurance Options</h2>
+            <p>Comprehensive coverage options for your peace of mind.</p>
+            <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+                <ul class="features-list" style="color: white;">
+                    <li>Full coverage for electronics (TVs, ovens, washing machines)</li>
+                    <li>Furniture protection included</li>
+                    <li>Boxes covered only with Professional Packing Service</li>
+                    <li>Customizable coverage options available</li>
+                </ul>
+            </div> 
+            <a href="{{ url_for('contact') }}" class="cta-button">Get a Free Quote</a>
+        </div>
+    </div>
+    
+    {% endblock %}  <!-- Close content block if used -->
+</body>
+</html>

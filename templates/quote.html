@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}Swift Moving | Pricing{% endblock %}
+
+{% block content %}
+<section class="py-16 bg-cream text-slate">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <h1 class="text-4xl font-bold text-center mb-10 text-navy font-heading">Our Moving Prices</h1>
+
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse mb-8 text-sm md:text-base shadow-lg rounded-lg overflow-hidden">
+                <thead>
+                    <tr class="bg-gold text-white">
+                        <th class="p-4">Apartment Size</th>
+                        <th class="p-4">Base Price (Ground Floor)</th>
+                        <th class="p-4">Price per Additional Floor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-t border-gray-200">
+                        <td class="p-4">1 Room</td>
+                        <td class="p-4">2,500₪</td>
+                        <td class="p-4">+500₪ per floor</td>
+                    </tr>
+                    <tr class="bg-slate/10 border-t border-gray-200">
+                        <td class="p-4">2 Rooms</td>
+                        <td class="p-4">3,000₪</td>
+                        <td class="p-4">+500₪ per floor</td>
+                    </tr>
+                    <tr class="bg-white border-t border-gray-200">
+                        <td class="p-4">3 Rooms</td>
+                        <td class="p-4">3,500₪</td>
+                        <td class="p-4">+500₪ per floor</td>
+                    </tr>
+                    <tr class="bg-slate/10 border-t border-gray-200">
+                        <td class="p-4">4 Rooms</td>
+                        <td class="p-4">4,000₪</td>
+                        <td class="p-4">+500₪ per floor</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="bg-blue-100 border-l-4 border-gold p-4 mb-8 text-sm text-slate-700">
+            <strong>Note:</strong> Prices are starting from. Final price may vary based on distance, floor, and services. Floors are counted from 2nd and up. 
+            <br><strong>Distance:</strong> If the move is within the same city (under 50 km), there is no distance charge.
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a href="{{ url_for('quote') }}" class="premium-btn">
+                Get a Custom Quote
+            </a>
+            <a href="{{ url_for('contact') }}" class="border-2 border-gold text-gold px-6 py-3 rounded-lg font-bold hover:bg-gold/10 transition duration-300">
+                Contact Us
+            </a>
+        </div>
+
+        <!-- Price Calculator -->
+        <div class="mt-12 p-6 bg-white rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4 font-heading text-navy">Price Calculator</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+                <div>
+                    <label for="room-size" class="block font-semibold mb-2">Number of Rooms:</label>
+                    <select id="room-size" class="w-full p-2 border rounded-lg">
+                        {% for i in range(1, 11) %}
+                            <option value="{{ i }}">{{ i }} Room{% if i > 1 %}s{% endif %}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="from-floor" class="block font-semibold mb-2">From Floor:</label>
+                    <input type="number" id="from-floor" min="0" value="0" class="w-full p-2 border rounded-lg">
+                </div>
+                <div>
+                    <label for="to-floor" class="block font-semibold mb-2">To Floor:</label>
+                    <input type="number" id="to-floor" min="0" value="1" class="w-full p-2 border rounded-lg">
+                </div>
+                <div>
+                    <label for="regular-boxes" class="block font-semibold mb-2">Regular Boxes (30₪ each):</label>
+                    <input type="number" id="regular-boxes" min="0" value="0" class="w-full p-2 border rounded-lg">
+                </div>
+                <div>
+                    <label for="fragile-boxes" class="block font-semibold mb-2">Fragile Boxes (35₪ each):</label>
+                    <input type="number" id="fragile-boxes" min="0" value="0" class="w-full p-2 border rounded-lg">
+                </div>
+                <div>
+                    <label for="distance" class="block font-semibold mb-2">Distance in KM:</label>
+                    <input type="number" id="distance" min="0" value="0" class="w-full p-2 border rounded-lg">
+                </div>
+            </div>
+            <button onclick="calculatePrice()" class="bg-gold text-white px-6 py-2 rounded-lg font-bold hover:bg-gold/90 transition duration-300">
+                Calculate Price
+            </button>
+            <div id="result" class="mt-6 text-lg text-navy font-semibold"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function calculatePrice() {
+        const roomCount = parseInt(document.getElementById('room-size').value);
+        const fromFloor = parseInt(document.getElementById('from-floor').value) || 0;
+        const toFloor = parseInt(document.getElementById('to-floor').value) || 0;
+        const regularBoxes = parseInt(document.getElementById('regular-boxes').value) || 0;
+        const fragileBoxes = parseInt(document.getElementById('fragile-boxes').value) || 0;
+        const distance = parseInt(document.getElementById('distance').value) || 0;
+
+        // Base room price
+        let basePrice = roomCount <= 1 ? 2500 : 2500 + (roomCount * 500);
+
+        // Floor cost
+        const floorDifference = Math.max(0, Math.abs(toFloor - fromFloor));
+        const floorCost = floorDifference * 500;
+
+        // Packing cost
+        const packingCost = (regularBoxes * 30) + (fragileBoxes * 35);
+
+        // Distance cost
+        let distanceCost = 0;
+        if (distance > 50) {
+            distanceCost = Math.ceil(distance / 50) * 750;
+        }
+
+        // Total
+        const totalPrice = basePrice + floorCost + packingCost + distanceCost;
+
+        // Result HTML
+        document.getElementById('result').innerHTML = `
+            <div>Estimated Price: <strong>${totalPrice.toLocaleString()}₪</strong></div>
+            <div class="text-sm mt-2 space-y-1">
+                <div>Base Price (${roomCount} Room${roomCount > 1 ? 's' : ''}): ${basePrice.toLocaleString()}₪</div>
+                <div>Floor Difference: ${floorDifference} × 500₪ = ${floorCost.toLocaleString()}₪</div>
+                <div>Packing: ${regularBoxes} regular × 30₪ + ${fragileBoxes} fragile × 35₪ = ${packingCost.toLocaleString()}₪</div>
+                <div>Distance: ${distance} km → ${distance <= 50 ? 'Free (Same City)' : distanceCost.toLocaleString() + '₪'}</div>
+            </div>
+        `;
+    }
+</script>
+{% endblock %}

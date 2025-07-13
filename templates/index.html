@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block title %}Professional Moving Services | Swift Moving{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="relative bg-navy text-cream py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 font-heading">Moving Made Simple</h1>
+                <p class="text-xl mb-8">Swift Moving provides reliable, efficient, and affordable moving services tailored to your needs.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="{{ url_for('quote') }}" class="premium-btn text-center">
+                        Get a Free Quote
+                    </a>
+                    <a href="{{ url_for('contact') }}" class="border-2 border-gold text-gold px-6 py-3 rounded-lg font-bold text-center hover:bg-gold/10 transition duration-300">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="{{ url_for('static', filename='images/moving-truck.png') }}" alt="Moving Truck" class="w-full max-w-md mx-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="py-16 bg-cream">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 font-heading">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-gold">
+                    <div class="text-teal text-4xl mb-4">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Apartment Moving</h3>
+                    <p class="text-slate">Stress-free moving for apartments of all sizes with careful handling of your belongings.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-gold">
+                    <div class="text-teal text-4xl mb-4">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Office Moving</h3>
+                    <p class="text-slate">Minimize downtime with our efficient office relocation services.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-gold">
+                    <div class="text-teal text-4xl mb-4">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Packing Services</h3>
+                    <p class="text-slate">Professional packing using high-quality materials to protect your items.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-gold">
+                    <div class="text-teal text-4xl mb-4">
+                        <i class="fas fa-truck-moving"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Long Distance</h3>
+                    <p class="text-slate">Reliable cross-country moving with tracking and timely delivery.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-gold">
+                    <div class="text-teal text-4xl mb-4">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Storage Solutions</h3>
+                    <p class="text-slate">Secure, climate-controlled storage for your belongings.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-gold">
+                    <div class="text-teal text-4xl mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Insurance Options</h3>
+                    <p class="text-slate">Comprehensive coverage options for your peace of mind.</p>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="{{ url_for('services') }}" class="premium-btn">
+                    View All Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-slate text-cream">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 font-heading">Why Choose Swift Moving?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-gold/20 text-gold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-award text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Professional Team</h3>
+                    <p class="text-cream/80">Our trained movers handle your belongings with care and professionalism.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-gold/20 text-gold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">On-Time Service</h3>
+                    <p class="text-cream/80">We value your time and guarantee punctual arrivals and deliveries.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-gold/20 text-gold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-dollar-sign text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Transparent Pricing</h3>
+                    <p class="text-cream/80">No hidden fees - you'll know exactly what you're paying for.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-cream">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 font-heading">What Our Customers Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-gold">
+                    <div class="flex items-center mb-4">
+                        <div class="text-gold mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-slate mb-4">"Swift Moving made my relocation effortless. The team was professional, efficient, and careful with all my belongings."</p>
+                    <div class="flex items-center">
+                        <div class="bg-gold/20 text-gold w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <p class="text-slate/70 text-sm">Apartment Move</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-gold">
+                    <div class="flex items-center mb-4">
+                        <div class="text-gold mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-slate mb-4">"Our office move was completed in record time with minimal disruption to our business. Highly recommended!"</p>
+                    <div class="flex items-center">
+                        <div class="bg-gold/20 text-gold w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <p class="text-slate/70 text-sm">Office Relocation</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-gold">
+                    <div class="flex items-center mb-4">
+                        <div class="text-gold mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-slate mb-4">"The long-distance move was handled perfectly. Everything arrived on time and in perfect condition."</p>
+                    <div class="flex items-center">
+                        <div class="bg-gold/20 text-gold w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">David Wilson</h4>
+                            <p class="text-slate/70 text-sm">Cross-Country Move</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-navy text-cream">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6 font-heading">Ready to Move?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Get your free, no-obligation quote today and experience the Swift Moving difference.</p>
+            <a href="{{ url_for('quote') }}" class="premium-btn mx-auto">
+                Get Your Free Quote
+            </a>
+        </div>
+    </section>
+{% endblock %}
